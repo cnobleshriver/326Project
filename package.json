@@ -1,0 +1,22 @@
+{
+  "name": "326project-client",
+  "version": "1.0.0",
+  "description": "CS 326 project - Tune Share",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnobleshriver/326project-client.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Christian Noble Shriver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cnobleshriver/326project-client/issues"
+  },
+  "homepage": "https://github.com/cnobleshriver/326project-client#readme"
+}
