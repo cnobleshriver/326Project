@@ -8,22 +8,10 @@ function showView(viewID) {
       document.getElementById(viewID).style.display = "block";
 }
 
-document.getElementById("homePage").addEventListener("click", function () {
-    showView("homePage");
-    renderPlaylists();
-});
-  
-document.getElementById("loginPage").addEventListener("click", function () {
-    showView("loginPage");
-});
-  
-document.getElementById("userProfilePage").addEventListener("click", function () {
-    showView("userProfilePage");
-});
-
-document.getElementById("playlistPage").addEventListener("click", function () {
-    showView("playlistPage");
-});
+function renderPlaylistPage(playlistName) {
+    // render playlist page
+    return
+}
 
 function renderPlaylists() {
     const container = document.getElementById('playlistContainer');
@@ -31,9 +19,6 @@ function renderPlaylists() {
     mockdata.playlists.forEach(playlist => {
         const playlistElement = document.createElement('div');
         playlistElement.classList.add('playlist');
-        playlistElement.addEventListener('click', function() {
-            renderPlaylistPage(playlist.name);
-        });
         // structure may change depending on how we want to use data with the back end
         playlistElement.innerHTML = `
             <h2>${playlist.name}</h2>
@@ -46,6 +31,10 @@ function renderPlaylists() {
             </div>
         `;
         container.appendChild(playlistElement);
+        playlistElement.addEventListener('click', function() {
+            showView("playlistPage");
+            renderPlaylistPage(playlist.name);
+        });
     });
 }
 
