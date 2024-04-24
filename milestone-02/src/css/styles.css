@@ -70,3 +70,13 @@ button {
 .vote.down {
     color: red;
 }
+
+.profile-container {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-format {
+    display: inline-block;
+}
