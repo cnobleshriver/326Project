@@ -10,10 +10,10 @@ function showView(viewID) {
 
 function renderPlaylistPage(playlistName) {
     // render playlist page
-    return
+    return;
 }
 
-function renderPlaylists() {
+function renderHomePage() {
     const container = document.getElementById('playlistContainer');
     container.innerHTML = '';
     mockdata.playlists.forEach(playlist => {
@@ -38,13 +38,24 @@ function renderPlaylists() {
     });
 }
 
+function renderLoginPage() {
+    // render login page
+    return;
+}
+
 window.vote = (playlistId, isUpvote) => {
     const playlist = mockdata.playlists.find(p => p.id === playlistId);
     if (playlist) {
         isUpvote ? playlist.votes++ : playlist.votes--;
-        renderPlaylists();
+        renderHomePage();
     }
 };
 
+const loginBtn = document.getElementById("loginBtn");
+loginBtn.addEventListener("click", function() {
+    showView("loginPage");
+    renderLoginPage();
+});
+
 showView("homePage");
-renderPlaylists();
+renderHomePage();
