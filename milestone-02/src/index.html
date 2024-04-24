@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tune Share</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/app.js"></script>
+    <script src="js/app.js" type="module"></script>
 </head>
 
 <body>
@@ -21,16 +21,16 @@
         </div>
     </header>
 
-    <main id="homePage" hidden>
+    <div id="homePage">
         <div class="controls">
             <input type="search" id="searchBox" placeholder="Search">
             <button id="sortBtn">Sort By: Popularity</button>
         </div>
 
         <div id="playlistContainer"></div>
-    </main>
+    </div>
 
-    <main id="login" hidden>
+    <div id="loginPage" class="view" style="display:none;">
         <div class="login-container">
             <h2>Login</h2>
             <form action="/submit_login" method="post">
@@ -41,9 +41,9 @@
                 <input type="submit" value="Login">
             </form>
         </div>
-    </main>
+    </div>
 
-    <main id="userProfile" hidden>
+    <div id="userProfilePage" class="view" style="display:none;">
         <div class="profile-container" style="margin-top: 40px;">
             <div>
                 <div class="profile-format" style="margin-right: 20px;">
@@ -60,7 +60,11 @@
                 <div  id="user-profile-playlists"></div>
             </div>
         </div>
-    </main>
+    </div>
+
+    <div id="playlistPage" class="view" style="display:none;">
+
+    </div>
 
     <!---
     <footer>
