@@ -52,12 +52,12 @@ function renderHomePage() {
         const upvoteButton = playlistElement.querySelector('.vote.up');
         const downvoteButton = playlistElement.querySelector('.vote.down');
 
-        upvoteButton.addEventListener('click', function(event) {
+        upvoteButton.addEventListener('click', function (event) {
             event.stopPropagation();
             window.vote(playlist.id, true);
         });
 
-        downvoteButton.addEventListener('click', function(event) {
+        downvoteButton.addEventListener('click', function (event) {
             event.stopPropagation();
             window.vote(playlist.id, false);
         });
@@ -151,13 +151,13 @@ loginBtn.addEventListener("click", function () {
     //renderLoginPage();
 });
 
-signupLink.addEventListener("click", function(event) {
+signupLink.addEventListener("click", function (event) {
     event.preventDefault();
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('signupPage').style.display = 'block';
 });
 
-signupForm.addEventListener("submit", async function(event) {
+signupForm.addEventListener("submit", async function (event) {
     event.preventDefault();
     const usernameField = document.getElementById("signupUsername");
     const passwordField = document.getElementById("signupPassword");
