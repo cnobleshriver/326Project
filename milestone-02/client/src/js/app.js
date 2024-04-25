@@ -1,10 +1,10 @@
 import * as mockdata from './mockdata.js';
-// import PouchDB from "pouchdb";
+const db = new PouchDB('users');
 
-// const db = new PouchDB("profiles");
 const loginBtn = document.getElementById("loginBtn");
 const submitBtn = document.getElementById("submit");
 const navbarLogo = document.getElementById("navbarLogo");
+const loginForm = document.querySelector('#loginPage form');
 
 /**
  * Shows the view with the given ID by setting its display style to 'block',
@@ -83,7 +83,16 @@ function renderLoginPage() {
  * @param {string} password - The password of the user to log in.
  */
 async function login(username, password) {
-    //await db.attemptLogin(username, password);
+    try {
+        const user = await db.get(username);
+        if (user.password === password) {
+            return 'Login successful';
+        } else {
+            return 'Invalid password';
+        }
+    } catch (error) {
+        return 'User does not exist';
+    }
 }
 
 /**
@@ -105,13 +114,19 @@ loginBtn.addEventListener("click", function () {
     showView("loginPage");
     //renderLoginPage();
 });
-submitBtn.addEventListener("click", function () {
+
+submitBtn.addEventListener("click", async function (event) {
+    event.preventDefault();
     const usernameField = document.getElementById("username");
     const passwordField = document.getElementById("password");
-    //login(usernameField.value, passwordField.value);
-    showView("userProfilePage");
-    //TODO: add renderUserProfile when said function is made
+    const message = await login(usernameField.value, passwordField.value);
+    alert(message);
+    if (message === 'Login successful') {
+        showView("userProfilePage");
+        //TODO: add renderUserProfile when said function is made
+    }
 });
+
 navbarLogo.addEventListener("click", function () {
     showView("homePage");
     renderHomePage();
