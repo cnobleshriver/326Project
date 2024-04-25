@@ -61,10 +61,17 @@ button {
     border-radius: 5px;
 }
 
+.playlist h2:hover {
+    cursor: pointer;
+}
+
 .vote {
-    color: green;
     margin-left: 10px;
     cursor: pointer;
+}
+
+.vote.up {
+    color: green;
 }
 
 .vote.down {

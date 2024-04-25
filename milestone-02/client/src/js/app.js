@@ -41,13 +41,28 @@ function renderHomePage() {
             <p>by ${playlist.user}</p>
             <p>${playlist.genre}</p>
             <div>
-                <span class="vote" onclick="vote(${playlist.id}, true)">👍</span>
+                <span class="vote up">👍</span>
                 <span>${playlist.votes}</span>
-                <span class="vote down" onclick="vote(${playlist.id}, false)">👎</span>
+                <span class="vote down">👎</span>
             </div>
         `;
         container.appendChild(playlistElement);
-        playlistElement.addEventListener('click', function () {
+
+        const upvoteButton = playlistElement.querySelector('.vote.up');
+        const downvoteButton = playlistElement.querySelector('.vote.down');
+
+        upvoteButton.addEventListener('click', function(event) {
+            event.stopPropagation();
+            window.vote(playlist.id, true);
+        });
+
+        downvoteButton.addEventListener('click', function(event) {
+            event.stopPropagation();
+            window.vote(playlist.id, false);
+        });
+
+        const playlistHeader = playlistElement.querySelector('h2');
+        playlistHeader.addEventListener('click', function () {
             showView("playlistPage");
             renderPlaylistPage(playlist.name);
         });
