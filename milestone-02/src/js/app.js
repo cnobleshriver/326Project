@@ -1,4 +1,7 @@
 import * as mockdata from './mockdata.js';
+//import PouchDB from "pouchdb";
+
+//const db = new PouchDB("profiles");
 
 function showView(viewID) {
     document.querySelectorAll(".view").forEach(function (view) {
@@ -39,8 +42,13 @@ function renderHomePage() {
 }
 
 function renderLoginPage() {
-    // render login page
+    // TODO: render login page
     return;
+}
+
+//This function needs DB to function
+async function login(username, password) {
+    //await db.attemptLogin(username, password);
 }
 
 window.vote = (playlistId, isUpvote) => {
@@ -53,8 +61,24 @@ window.vote = (playlistId, isUpvote) => {
 
 const loginBtn = document.getElementById("loginBtn");
 loginBtn.addEventListener("click", function() {
+    console.log("Login Screen Loading");
     showView("loginPage");
-    renderLoginPage();
+    //renderLoginPage();
+});
+
+const submitBtn = document.getElementById("submit")
+submitBtn.addEventListener("click", function() {
+    const usernameField = document.getElementById("username");
+    const passwordField = document.getElementById("password");
+    //login(usernameField.value, passwordField.value);
+    showView("userProfilePage");
+    //TODO: add renderUserProfile when said function is made
+});
+
+const appTitle = document.getElementById("appTitle");
+appTitle.addEventListener("click", function() {
+    showView("homePage");
+    renderHomePage();
 });
 
 showView("homePage");

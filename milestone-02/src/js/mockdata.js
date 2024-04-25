@@ -42,3 +42,12 @@ export const playlist02 = [
     song03,
     song04
 ];
+
+// user profiles
+export const profile01 = {
+    username: "User 01",
+    password: "password",
+    dateJoined: "April 1 2024",
+    description: "A generic user",
+    playlists: [playlist01, playlist02]
+}
