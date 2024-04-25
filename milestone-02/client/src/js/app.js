@@ -2,9 +2,10 @@ import * as mockdata from './mockdata.js';
 const db = new PouchDB('users');
 
 const loginBtn = document.getElementById("loginBtn");
-const submitBtn = document.getElementById("submit");
 const navbarLogo = document.getElementById("navbarLogo");
-const loginForm = document.querySelector('#loginPage form');
+const loginForm = document.getElementById("loginForm");
+const signupForm = document.getElementById("signupForm");
+const signupLink = document.querySelector("#loginPage a");
 
 /**
  * Shows the view with the given ID by setting its display style to 'block',
@@ -86,12 +87,47 @@ async function login(username, password) {
     try {
         const user = await db.get(username);
         if (user.password === password) {
-            return 'Login successful';
+            return "Login successful";
         } else {
-            return 'Invalid password';
+            return "Invalid password";
         }
     } catch (error) {
-        return 'User does not exist';
+        return "User does not exist";
+    }
+}
+
+/**
+ * This asynchronous function is used to sign up a new user.
+ *
+ * @param {string} username - The username of the user. This will be used as the unique identifier (_id) for the user in the database.
+ * @param {string} password - The password of the user. This will be stored in the database.
+ *
+ * @returns {Promise<string>} A promise that resolves to a string message indicating the result of the signup operation.
+ *
+ * @throws {Error} If the user already exists or there is an error registering the user, it throws an error.
+ */
+async function signup(username, password) {
+    const user = {
+        _id: username,
+        password: password
+    };
+
+    try {
+        const existingUser = await db.get(user._id);
+        if (existingUser && existingUser._id) {
+            throw new Error('User already exists');
+        }
+    } catch (error) {
+        if (error.name === 'not_found') {
+            try {
+                const response = await db.put(user);
+                return 'User registered successfully';
+            } catch (putError) {
+                throw new Error('Error registering user');
+            }
+        } else {
+            throw error;
+        }
     }
 }
 
@@ -115,13 +151,31 @@ loginBtn.addEventListener("click", function () {
     //renderLoginPage();
 });
 
-submitBtn.addEventListener("click", async function (event) {
+signupLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('signupPage').style.display = 'block';
+});
+
+signupForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const usernameField = document.getElementById("signupUsername");
+    const passwordField = document.getElementById("signupPassword");
+    const message = await signup(usernameField.value, passwordField.value);
+    alert(message);
+    if (message === "User registered successfully") {
+        document.getElementById('signupPage').style.display = 'none';
+        document.getElementById('loginPage').style.display = 'block';
+    }
+});
+
+loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
     const usernameField = document.getElementById("username");
     const passwordField = document.getElementById("password");
     const message = await login(usernameField.value, passwordField.value);
     alert(message);
-    if (message === 'Login successful') {
+    if (message === "Login successful") {
         showView("userProfilePage");
         //TODO: add renderUserProfile when said function is made
     }

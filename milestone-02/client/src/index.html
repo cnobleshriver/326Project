@@ -32,12 +32,26 @@
     <div id="loginPage" class="view" style="display:none;">
         <div class="login-container">
             <h2>Login</h2>
-            <form>
+            <form id="loginForm">
                 <label for="username">Username:</label><br>
                 <input type="text" id="username" name="username"><br>
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password"><br>
                 <input type="submit" id="submit" value="Login">
+            </form>
+            <p>Don't have an account? <a href="#signupPage">Sign up</a></p>
+        </div>
+    </div>
+
+    <div id="signupPage" class="view" style="display:none;">
+        <div class="login-container">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <label for="signupUsername">Username:</label><br>
+                <input type="text" id="signupUsername" name="signupUsername"><br>
+                <label for="signupPassword">Password:</label><br>
+                <input type="password" id="signupPassword" name="signupPassword"><br>
+                <input type="submit" id="signupSubmit" value="Sign Up">
             </form>
         </div>
     </div>
