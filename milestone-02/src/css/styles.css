@@ -1,0 +1,86 @@
+body, h1, button, input {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.auth-buttons {
+    margin-right: 20px;
+}
+
+.auth-buttons button {
+    margin-left: 10px;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+input[type="search"] {
+    padding: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+}
+
+#playlistContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playlist {
+    background-color: #222;
+    color: white;
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.vote {
+    color: green;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.vote.down {
+    color: red;
+}
+
+.profile-container {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-format {
+    display: inline-block;
+}
+
+.view {
+    display: none;
+}

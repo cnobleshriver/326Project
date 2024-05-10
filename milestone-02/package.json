@@ -1,0 +1,25 @@
+{
+  "name": "326project-client",
+  "version": "1.0.0",
+  "description": "CS 326 project - Tune Share",
+  "main": "src/js/app.js",
+  "scripts": {
+    "milestone-02": "http-server src -p 3000 -c-1 -o -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnobleshriver/326project-client.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Aditya Bala, Christian Noble Shriver, Miles Swank, and William Fang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cnobleshriver/326project-client/issues"
+  },
+  "homepage": "https://github.com/cnobleshriver/326project-client#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

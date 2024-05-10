@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tune Share</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/app.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <a href="/index.html">
+            <h1 id="appTitle">TuneShare</h1>
+        </a>
+        <div class="auth-buttons">
+            <button id="loginBtn">Login / Sign up</button>
+        </div>
+    </header>
+
+    <div id="homePage" class="view">
+        <div class="controls">
+            <input type="search" id="searchBox" placeholder="Search">
+            <button id="sortBtn">Sort By: Popularity</button>
+        </div>
+
+        <div id="playlistContainer"></div>
+    </div>
+
+    <div id="loginPage" class="view" style="display:none;">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form>
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password"><br>
+                <input type="submit" id="submit" value="Login">
+            </form>
+        </div>
+    </div>
+
+    <div id="userProfilePage" class="view" style="display:none;">
+        <div class="profile-container" style="margin-top: 40px;">
+            <div>
+                <div class="profile-format" style="margin-right: 20px;">
+                    <img src="default-pfp.jpg" alt="pfp" class="pfp" width="200">
+                </div>
+                <div class="profile-format">
+                    <h1 id="usernameHeader">User101</h1>
+                    <p id="dateOfJoin">Joined April 1 2024</p>
+                    <p id="userdescription">This is the user description.</p>
+                </div>
+            </div>
+            <div>
+                <h2>Playlists</h2>
+                <div  id="user-profile-playlists"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="playlistPage" class="view" style="display:none;">
+        Playlist Page
+    </div>
+
+    <!---
+    <footer>
+        <p>Debug Menu</p>
+        <input type="button" id="showMain">
+        <input type="button" id="showLogin">
+        <input type="button" id="showProfile">
+    </footer>
+    -->
+</body>
+
+</html>
