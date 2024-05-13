@@ -4,7 +4,10 @@
   "description": "CS 326 project - Tune Share",
   "main": "src/js/app.js",
   "scripts": {
-    "milestone-03": "http-server src/client -p 3000 -c-1 -o -s"
+    "milestone-03": "http-server src/client -p 3000 -c-1 -o -s",
+    "client": "http-server src/client -p 3000 -c-1 -o -s",
+    "server": "node src/server/server.js",
+    "start": "npm run server & npm run client"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,13 @@
     "http-server": "^14.1.1"
   },
   "dependencies": {
-    "pouchdb": "^8.0.1"
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.19.2",
+    "path": "^0.12.7",
+    "pouchdb": "^8.0.1",
+    "querystring": "^0.2.1",
+    "request": "^2.88.2"
   }
 }

@@ -19,12 +19,26 @@ header a {
     text-decoration: none;
 }
 
-.auth-buttons {
+.header-right {
     margin-right: 20px;
 }
 
-.auth-buttons button {
+.header-right button {
     margin-left: 10px;
+    margin: 1rem 1rem 0 0;
+    border: 0;
+    border-radius: 20px;
+    padding: 10px 3rem;
+    font-size: 0.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color:#1ed760;
+    color: black;
+}
+
+.header-right button:hover {
+    background-color: #1fdf64;
 }
 
 h1 {
