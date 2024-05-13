@@ -4,7 +4,7 @@
   "description": "CS 326 project - Tune Share",
   "main": "src/js/app.js",
   "scripts": {
-    "milestone-02": "http-server src -p 3000 -c-1 -o -s"
+    "milestone-03": "http-server src/client/src -p 3000 -c-1 -o -s"
   },
   "repository": {
     "type": "git",
