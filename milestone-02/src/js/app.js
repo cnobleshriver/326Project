@@ -1,7 +1,8 @@
 import * as mockdata from './mockdata.js';
-//import PouchDB from "pouchdb";
+import * as db from "./database.js";
 
-//const db = new PouchDB("profiles");
+const URL = "http://localhost:4444";
+const headerFields = { "Accept": "application/json" };
 
 function showView(viewID) {
     document.querySelectorAll(".view").forEach(function (view) {
@@ -28,9 +29,9 @@ function renderHomePage() {
             <p>by ${playlist.user}</p>
             <p>${playlist.genre}</p>
             <div>
-                <span class="vote" onclick="vote(${playlist.id}, true)">👍</span>
+                <span class="vote" id="upvote" onclick="vote(${playlist.id}, true)">👍</span>
                 <span>${playlist.votes}</span>
-                <span class="vote down" onclick="vote(${playlist.id}, false)">👎</span>
+                <span class="vote down" id="downvote" onclick="vote(${playlist.id}, false)">👎</span>
             </div>
         `;
         container.appendChild(playlistElement);
@@ -80,6 +81,31 @@ appTitle.addEventListener("click", function() {
     showView("homePage");
     renderHomePage();
 });
+
+//Function is assuming getSpotifyJSON() is returning an endpoint from /me/playlists
+async function createUser(){
+    const tempJSON = getSpotifyJSON();
+    userJSON = {
+        "id": tempJSON.items[0].owner.id,
+        "name": tempJSON.items[0].owner.display_name,
+        "playlists": tempJSON.items
+    };
+    await db.saveUser(userJSON.id, userJSON);
+    fetch('URL', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userJSON)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response from server:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
 showView("homePage");
 renderHomePage();
