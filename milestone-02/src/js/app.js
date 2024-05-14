@@ -85,11 +85,15 @@ appTitle.addEventListener("click", function() {
 //Function is assuming getSpotifyJSON() is returning an endpoint from /me/playlists
 async function createUser(){
     const tempJSON = getSpotifyJSON();
+    let listupvotes = new Array(tempJSON.total).fill(0);
+
     userJSON = {
         "id": tempJSON.items[0].owner.id,
         "name": tempJSON.items[0].owner.display_name,
-        "playlists": tempJSON.items
+        "playlists": tempJSON.items,
+        "upvotes": listupvotes //Initially set to list of 0s equivalent to count of playlists
     };
+
     await db.saveUser(userJSON.id, userJSON);
     fetch('URL', {
     method: 'POST',
@@ -106,6 +110,54 @@ async function createUser(){
         console.error('Error:', error);
     });
 }
+
+//ID is a string from a userJSON.id call. Expected return is a User object.
+async function getUserFromServer(id) {
+    fetch('URL', {
+    method: 'POST',
+    headers: {
+        "Content-Type": "text/html"
+    },
+    body: id
+    })
+    .then(response => response.json())
+    .then(data => {
+        db.saveUser(data.id, data);
+        console.log('Response from server:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+async function updateUser(userJSON) {
+    db.modifyUser({_id: userJSON["id"], userJSON});
+    fetch('URL', {
+        method: 'PUT',
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body: userJSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response from server:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function addUpvote(playlistID, userJSON) {
+    userJSON.upvotes[userJSON.playlists.findIndex(item => item.id === playlistID)] += 1;
+    return userJSON;
+}
+
+function downUpvote(playlistID, userJSON) {
+    userJSON.upvotes[userJSON.playlists.findIndex(item => item.id === playlistID)] -= 1;
+    return userJSON;
+}
+
 
 showView("homePage");
 renderHomePage();
