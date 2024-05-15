@@ -2,6 +2,15 @@
 
 Tune share was built as a project for CS 326 at UMass Amherst.
 
-# For instructors/graders
+# Instructions for running the project
+Type these commands in this order
 
-The most recent version of milestone-02 exists in the milestone-02 branch!
+cd milestone-03
+npm i
+cd client
+npm i
+cd ..
+cd server
+npm i
+cd ..
+npm start
