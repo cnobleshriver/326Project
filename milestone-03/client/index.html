@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneShare</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <a href="/index.html">
+            <h1 id="navbarLogo">TuneShare</h1>
+        </a>
+        <div class="header-right">
+            <div id="user-info" class="user-info-container"></div>
+            <button id="login-button" style="display: none;">Login with Spotify</button>
+            <button id="logout-button" style="display: none;">Logout</button>
+        </div>
+    </header>
+    <div class="container">
+        <div>
+            <label for="playlists" class="form-label">Playlists</label>
+            <select id="playlists" class="form-control"></select>
+            <input type="button" onclick="refreshPlaylists()" value="Refresh Playlists">
+            <input type="button" onclick="addPlaylistToServer()" value="Add Playlist">
+        </div>
+        <div>
+            <label for="tracks" class="form-label">Tracks</label>
+            <select id="tracks" class="form-control"></select>
+            <input type="button" onclick="fetchTracks()" value="Fetch Tracks">
+        </div>
+        <div id="stored-playlists" class="playlists-container"></div>
+    </div>
+</body>
+</html>
